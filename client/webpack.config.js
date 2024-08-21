@@ -17,7 +17,7 @@ module.exports = () => {
     plugins: [
       // Workbox plugins for a service worker and manifest file.
       new InjectManifest({
-        swSrc: '.src-sw.js',
+        swSrc: './src-sw.js',
         swDest: 'service-worker.js',
       }),
       new WebpackPwaManifest({
