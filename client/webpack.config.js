@@ -33,15 +33,16 @@ module.exports = () => {
       // Creates a manifest.json file
       new WebpackPwaManifest({
         filename: 'manifest.json',
-        inject: false,
+        inject: true,
         fingerprints: false,
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
         description: 'Just another text editor',
         background_color: '#225ca3',
         theme_color: '#225ca3',
-        start_url: './',
-        publicPath: './',
+        start_url: '/',
+        publicPath: '/',
+        display: 'standalone',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
