@@ -25,10 +25,12 @@ module.exports = () => {
         clientsClaim: true,
         skipWaiting: true,
       }),
+      // Injects acustom service worker
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
+      // Creates a manifest.json file
       new WebpackPwaManifest({
         filename: 'manifest.json',
         inject: false,
@@ -38,6 +40,8 @@ module.exports = () => {
         description: 'Just another text editor',
         background_color: '#225ca3',
         theme_color: '#225ca3',
+        // start_url: '/',
+        // publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
