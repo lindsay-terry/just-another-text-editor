@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const { GenerateSW, InjectManifest } = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = () => {
   return {
@@ -21,11 +21,7 @@ module.exports = () => {
       }),
       new MiniCssExtractPlugin(),
       // Workbox plugins for a service worker and manifest file.
-      new GenerateSW({
-        clientsClaim: true,
-        skipWaiting: true,
-      }),
-      // Injects acustom service worker
+      // Injects a custom service worker
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
@@ -56,7 +52,8 @@ module.exports = () => {
     module: {
       rules: [
         {
-          // CSS loaders and babel to webpack.
+          // CSS loaders and babel loader to load CSS and babel to translate 
+          // all versions of JavaScript.
           test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,
           use: {
